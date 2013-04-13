@@ -22,9 +22,16 @@ Usage
 Change your working directory to the project root dir and copy
 your .lsp file there (e.g. "example.lsp"). Then run
 
-`./lsp2js example.jsp`
+`./lsp2js example.lsp`
 
 Now the file `example.js` should be created.
+
+Example
+-------
+
+`./lsp2js dmitry1.lsp` will create an executable version of
+some demo functions in Lisp. Then `nodejs dmitry1.js`
+will run the code on command line.
 
 Bugs
 ----
