@@ -1,0 +1,25 @@
+#!/bin/sh
+NODEJS=nodejs
+
+which $NODEJS || {
+ echo "$NODEJS is missing or has a different name as expected."
+ exit 1
+ }
+
+if [ $# != 1 ]; then
+ echo "Usage: $0 <program.lsp>"
+ echo "This tool will create program.js."
+ exit 2
+ fi
+
+WORK=`mktemp`
+OUT=`basename $1 .lsp`.js
+test -r $OUT && {
+ echo "$OUT already exists, not overwriting."
+ exit 3
+ }
+
+cat $1 | grep -v ^% > $WORK
+nodejs convert.js $WORK > $OUT
+
+exit 0
